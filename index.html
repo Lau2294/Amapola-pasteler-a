@@ -3,67 +3,302 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amapola Pastelería</title>
+  <title>Amapola Pastelería — Pasteles vegetarianos para cumpleaños</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Arial, sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #222; }
-    header { border-bottom: 2px solid #e0a96d; padding-bottom: 16px; margin-bottom: 24px; }
-    .btn-asistente { display: inline-block; background: #8c4a27; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 12px; }
-    section { margin-bottom: 24px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
-    th { background: #f7efe6; }
+    :root {
+      --bg-crema: #fdf7f0;
+      --bg-tarjeta: #fffdf9;
+      --amapola: #c83e37;
+      --amapola-oscuro: #9e2b25;
+      --cacao: #5b3424;
+      --cacao-suave: #7a4b37;
+      --arena: #f3e5d6;
+      --borde: #ebd6c0;
+      --texto: #2e1d16;
+      --texto-tenue: #6b5348;
+      --sombra: 0 14px 34px rgba(91, 52, 36, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+      color: var(--texto);
+      line-height: 1.65;
+      background-color: var(--bg-crema);
+      /* Patrón gráfico sutil de repostería y amapolas */
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(200, 62, 55, 0.08) 0%, transparent 38%),
+        radial-gradient(circle at 88% 18%, rgba(235, 168, 122, 0.16) 0%, transparent 42%),
+        radial-gradient(rgba(91, 52, 36, 0.09) 1.25px, transparent 1.25px),
+        radial-gradient(rgba(200, 62, 55, 0.08) 1.5px, transparent 1.5px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 56px 56px;
+      background-position: 0 0, 0 0, 0 0, 14px 14px;
+      padding: 28px 16px 64px;
+    }
+
+    .contenedor {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .tarjeta-principal {
+      background: var(--bg-tarjeta);
+      border: 1px solid var(--borde);
+      border-radius: 26px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 36px 32px 30px;
+      background:
+        linear-gradient(135deg, rgba(255, 246, 235, 0.96) 0%, rgba(250, 229, 214, 0.92) 100%);
+      border-bottom: 1px solid var(--borde);
+      position: relative;
+    }
+
+    .insignia {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--amapola-oscuro);
+      border: 1px solid #f0c9c4;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .punto-amapola {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--amapola);
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2rem, 4.5vw, 2.75rem);
+      line-height: 1.15;
+      margin: 0 0 12px;
+      color: var(--cacao);
+    }
+
+    .descripcion {
+      margin: 0 0 22px;
+      font-size: 1.05rem;
+      color: var(--texto-tenue);
+      max-width: 66ch;
+    }
+
+    .btn-asistente {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(180deg, var(--cacao-suave) 0%, var(--cacao) 100%);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 13px 22px;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(91, 52, 36, 0.22);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn-asistente:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .cuerpo {
+      padding: 32px;
+    }
+
+    .separador-pastel {
+      height: 2px;
+      border: 0;
+      margin: 28px 0;
+      background: linear-gradient(90deg, transparent, var(--amapola), #e7b896, transparent);
+      opacity: 0.45;
+    }
+
+    h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.48rem;
+      color: var(--cacao);
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      transform: rotate(45deg);
+      background: var(--amapola);
+      flex-shrink: 0;
+    }
+
+    .caja-publico {
+      background: var(--arena);
+      border-left: 4px solid var(--amapola);
+      border-radius: 14px;
+      padding: 16px 20px;
+      color: var(--texto);
+    }
+
+    .lista-sabores {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 22px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .lista-sabores li {
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-weight: 600;
+      color: var(--cacao);
+      box-shadow: 0 4px 12px rgba(91, 52, 36, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lista-sabores li::before {
+      content: "✦";
+      color: var(--amapola);
+      font-size: 0.95rem;
+    }
+
+    .tabla-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    thead th {
+      background: var(--arena);
+      color: var(--cacao);
+      font-weight: 700;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--borde);
+    }
+
+    tbody td {
+      padding: 12px 18px;
+      border-bottom: 1px solid #f4e8dc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fcf7f2;
+    }
+
+    tbody td:last-child {
+      font-weight: 700;
+      color: var(--cacao);
+    }
+
+    @media (max-width: 600px) {
+      .hero, .cuerpo {
+        padding: 24px 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Amapola Pastelería</h1>
-    <p><strong>Descripción del negocio:</strong> Pastelería especializada en pasteles de cumpleaños elaborados con ingredientes aptos para personas vegetarianas, con precios que varían según el tamaño (de 6 a 20 personas).</p>
-    <a class="btn-asistente" href="TU_ENLACE_DEL_CHATBOT_AQUI" target="_blank" rel="noopener noreferrer">Pregúntale al asistente</a>
-  </header>
+  <main class="contenedor">
+    <article class="tarjeta-principal">
+      <header class="hero">
+        <div class="insignia">
+          <span class="punto-amapola"></span>
+          <span>Repostería artesanal vegetariana</span>
+        </div>
+        <h1>Amapola Pastelería</h1>
+        <p class="descripcion">
+          <strong>Descripción del negocio:</strong> Pastelería especializada en pasteles de cumpleaños elaborados con ingredientes aptos para personas vegetarianas, con precios que varían según el tamaño (de 6 a 20 personas).
+        </p>
+        <button type="button" class="btn-asistente" id="btn-asistente">
+          Pregúntale al asistente
+        </button>
+      </header>
 
-  <section>
-    <h2>Público al que se dirige</h2>
-    <p>Personas que celebran cumpleaños y buscan opciones de pastelería con ingredientes aptos para personas vegetarianas, resolviendo la necesidad de contar con propuestas claras sin tener que adivinar qué contienen.</p>
-  </section>
+      <div class="cuerpo">
+        <section aria-labelledby="titulo-publico">
+          <h2 id="titulo-publico">Público al que se dirige</h2>
+          <div class="caja-publico">
+            Personas que celebran cumpleaños y buscan opciones de pastelería con ingredientes aptos para personas vegetarianas, resolviendo la necesidad de contar con propuestas claras sin tener que adivinar qué contienen.
+          </div>
+        </section>
 
-  <section>
-    <h2>Productos y precios por tamaño (COP)</h2>
-    <ul>
-      <li><strong>Pastel de chocolate vegetariano</strong></li>
-      <li><strong>Pastel de zanahoria vegetariano</strong></li>
-      <li><strong>Pastel de amapola vegetariano</strong></li>
-    </ul>
-    <table>
-      <thead>
-        <tr>
-          <th>Tamaño</th>
-          <th>Precio de referencia (COP)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>6 personas</td><td>$30.000</td></tr>
-        <tr><td>8 personas</td><td>$35.000</td></tr>
-        <tr><td>10 personas</td><td>$41.000</td></tr>
-        <tr><td>12 personas</td><td>$48.000</td></tr>
-        <tr><td>14 personas</td><td>$56.000</td></tr>
-        <tr><td>16 personas</td><td>$65.000</td></tr>
-        <tr><td>18 personas</td><td>$76.000</td></tr>
-        <tr><td>20 personas</td><td>$88.000</td></tr>
-      </tbody>
-    </table>
-    <p><small>Horarios, plazos y condiciones: Pendiente de definir.</small></p>
-  </section>
+        <hr class="separador-pastel" />
 
-  <section>
-    <h2>Información de contacto</h2>
-    <p>WhatsApp de prueba (por confirmar número o enlace de prueba). Horarios, plazos y condiciones: Pendiente de definir.</p>
-  </section>
+        <section aria-labelledby="titulo-productos">
+          <h2 id="titulo-productos">Productos y precios por tamaño (COP)</h2>
+          <ul class="lista-sabores">
+            <li>Pastel de chocolate vegetariano</li>
+            <li>Pastel de zanahoria vegetariano</li>
+            <li>Pastel de amapola vegetariano</li>
+          </ul>
 
-  <section>
-    <h2>Preguntas frecuentes</h2>
-    <p><strong>¿Qué sabores de pasteles de cumpleaños ofrecen?</strong><br />Pastel de chocolate vegetariano, pastel de zanahoria vegetariano y pastel de amapola vegetariano, con ingredientes aptos para personas vegetarianas.</p>
-    <p><strong>¿Cómo varían los precios según el tamaño del pastel?</strong><br />Van desde $30.000 COP (6 personas) y $35.000 COP (8 personas), aumentando de forma exponencial (redondeado) hasta $88.000 COP (20 personas).</p>
-    <p><strong>¿Cómo puedo hacer un pedido o resolver dudas adicionales?</strong><br />A través del WhatsApp de prueba indicado en la página (horarios, plazos y condiciones están pendiente de definir).</p>
-  </section>
+          <div class="tabla-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tamaño</th>
+                  <th>Precio de referencia (COP)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>6 personas</td><td>$30.000</td></tr>
+                <tr><td>8 personas</td><td>$35.000</td></tr>
+                <tr><td>10 personas</td><td>$41.000</td></tr>
+                <tr><td>12 personas</td><td>$48.000</td></tr>
+                <tr><td>14 personas</td><td>$56.000</td></tr>
+                <tr><td>16 personas</td><td>$65.000</td></tr>
+                <tr><td>18 personas</td><td>$76.000</td></tr>
+                <tr><td>20 personas</td><td>$88.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
+
+
